@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
+import MovieItem from '../MovieItem/MovieItem';
 
 function MovieList() {
 
@@ -14,7 +15,13 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
-            <section className="movies">
+            <div>
+                {movies.map(movie => (
+                    <MovieItem key={movie.id} movie={movie} />
+                    ))}
+            </div>
+
+            {/* <section className="movies">
                 {movies.map(movie => {
                     return (
                         <div key={movie.id} >
@@ -23,7 +30,7 @@ function MovieList() {
                         </div>
                     );
                 })}
-            </section>
+            </section> */}
         </main>
 
     );
