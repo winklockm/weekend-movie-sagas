@@ -15,6 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails)
+    // yield takeEvery('CLEAR_MOVIE_DETAILS', fetchMovieDetails)
 }
 
 // **** SAGA FUNCTIONS ****
@@ -67,6 +68,8 @@ const sagaMiddleware = createSagaMiddleware();
         switch (action.type) {
             case 'SET_MOVIE_DETAILS':
                 return action.payload
+            case 'CLEAR_MOVIE_DETAILS':
+                return {}
             default:
                 return state
         }
