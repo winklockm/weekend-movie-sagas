@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// get info about all bikes
 router.get('/', (req, res) => {
-
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
     .then( result => {
@@ -13,8 +13,21 @@ router.get('/', (req, res) => {
       console.log('ERROR: Get all movies', err);
       res.sendStatus(500)
     })
-
 });
+
+// get detailed info about one movie
+router.get('/:id', (req, res) => {
+  const sqlText = `SELECT * FROM movies WHERE movies.id=$1;`
+  const sqlValues = [req.params.id]
+  pool.query(sqlText, sqlValues)
+    .then(dbRes => {
+      res.send(dbRes.rows[0])
+    })
+    .catch(dbErr => {
+      console.log('GET /api/movie/:id error:', dbErr)
+      res.sendStatus(500)
+    })
+})
 
 router.post('/', (req, res) => {
   console.log(req.body);
