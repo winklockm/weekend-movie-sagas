@@ -14,49 +14,80 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails)
 }
 
-function* fetchAllMovies() {
-    // get all movies from the DB
-    try {
-        const movies = yield axios.get('/api/movie');
-        console.log('get all:', movies.data);
-        yield put({ type: 'SET_MOVIES', payload: movies.data });
+// **** SAGA FUNCTIONS ****
 
-    } catch {
-        console.log('get all error');
+    function* fetchAllMovies() {
+        // get all movies from the DB
+        try {
+            const moviesRes = yield axios.get('/api/movie');
+            console.log('get all:', moviesRes.data);
+            yield put({ type: 'SET_MOVIES', payload: moviesRes.data });
+
+        } catch {
+            console.log('get all error');
+        }
     }
-        
-}
+
+    function* fetchMovieDetails(action) {
+        // get one movie from the DB
+        try {
+            const movieId = action.payload
+            const movieDetailsRes = yield axios({
+                method: 'GET',
+                url: `/api/movie/${movieId}`
+            })
+            yield put({
+                type: 'SET_MOVIE_DETAILS',
+                payload: movieDetailsRes.data
+            })
+        } catch {
+            console.log('error in fetchMovieDetails')
+        }
+    }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-// Used to store movies returned from the server
-const movies = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_MOVIES':
-            return action.payload;
-        default:
-            return state;
-    }
-}
+// **** REDUCERS ****
 
-// Used to store the movie genres
-const genres = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_GENRES':
-            return action.payload;
-        default:
-            return state;
+    // Used to store movies returned from the server
+    const movies = (state = [], action) => {
+        switch (action.type) {
+            case 'SET_MOVIES':
+                return action.payload;
+            default:
+                return state;
+        }
     }
-}
+
+    const movieDetails = (state = {}, action) => {
+        switch (action.type) {
+            case 'SET_MOVIE_DETAILS':
+                return action.payload
+            default:
+                return state
+        }
+    }
+
+    // Used to store the movie genres
+    const genres = (state = [], action) => {
+        switch (action.type) {
+            case 'SET_GENRES':
+                return action.payload;
+            default:
+                return state;
+        }
+    }
 
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movieDetails,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
