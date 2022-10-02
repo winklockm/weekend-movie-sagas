@@ -98,3 +98,21 @@
     ;
   }
 }
+
+
+.listContainer {
+  background-color: tomato;
+  display: grid;
+  /* height: 80vh; */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: .33fr .33fr .33fr;
+  grid-gap: 0.2rem;
+  /* grid-template-areas: 
+    "detailPoster detailTitle"
+    "detailPoster detailDescription"
+    "detailPoster detailDescription"
+    "detailGenre detailDescription"
+    "detailBack detailBack"
+  ; */
+  justify-content: start;
+}

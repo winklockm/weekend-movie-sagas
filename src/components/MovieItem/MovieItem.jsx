@@ -10,10 +10,10 @@ function MovieItem({movie}) {
     }
 
     return (
-        <div onClick={handleClick} key={movie.id} >
+        <span onClick={handleClick} key={movie.id} >
             <h3>{movie.title}</h3>
             <img src={movie.poster} alt={movie.title}/>
-        </div>
+        </span>
     )
 }
 
