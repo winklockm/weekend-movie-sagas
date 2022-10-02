@@ -15,7 +15,6 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails)
-    // yield takeEvery('CLEAR_MOVIE_DETAILS', fetchMovieDetails)
 }
 
 // **** SAGA FUNCTIONS ****
@@ -43,6 +42,10 @@ function* rootSaga() {
             yield put({
                 type: 'SET_MOVIE_DETAILS',
                 payload: movieDetailsRes.data
+            })
+            yield put({
+                type: 'SET_GENRES',
+                payload: movieDetailsRes.data.genres
             })
         } catch {
             console.log('error in fetchMovieDetails')
