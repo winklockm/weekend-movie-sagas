@@ -7,6 +7,9 @@ function MovieDetails() {
     
     const dispatch = useDispatch();
     const movieDetails = useSelector(store => store.movieDetails)
+    // movieGenres is an array
+    const movieGenres = useSelector(store => store.genres)
+    
     const params = useParams();
     const history = useHistory();
     // params is an object with key id and value of the movie id that was clicked
@@ -28,11 +31,14 @@ function MovieDetails() {
         console.log('in handleBack');
         history.push(`/`);
     }
-
+    console.log('movieGenres are:', movieGenres)
     return (
         <>
         <p>{movieDetails.title}</p>
         <p>{movieDetails.description}</p>
+        {movieGenres.map(genre => (
+            <p key={genre}>{genre}</p>
+        ))}
         <img src={movieDetails.poster} alt={movieDetails.title}/>
         <Button onClick={handleBack} variant="contained">Back to Movie List</Button>
         </>

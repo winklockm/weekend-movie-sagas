@@ -15,9 +15,28 @@ router.get('/', (req, res) => {
     })
 });
 
+// // get detailed info about one movie
+// router.get('/:id', (req, res) => {
+//   const sqlText = `SELECT * FROM movies WHERE movies.id=$1;`
+//   const sqlValues = [req.params.id]
+//   pool.query(sqlText, sqlValues)
+//     .then(dbRes => {
+//       res.send(dbRes.rows[0])
+//     })
+//     .catch(dbErr => {
+//       console.log('GET /api/movie/:id error:', dbErr)
+//       res.sendStatus(500)
+//     })
+// })
+
 // get detailed info about one movie
 router.get('/:id', (req, res) => {
-  const sqlText = `SELECT * FROM movies WHERE movies.id=$1;`
+  const sqlText = `SELECT movies.id, movies.title, movies.poster, movies.description,
+  ARRAY_AGG (genres.name) genres FROM movies
+      JOIN movies_genres ON movies.id = movies_genres.movie_id
+      JOIN genres ON movies_genres.genre_id = genres.id
+    WHERE movies.id=$1
+    GROUP BY movies.id;`
   const sqlValues = [req.params.id]
   pool.query(sqlText, sqlValues)
     .then(dbRes => {
