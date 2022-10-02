@@ -116,3 +116,30 @@
   ; */
   justify-content: start;
 }
+
+
+.itemContainer {
+  background-color: blueviolet;
+  display: grid;
+  /* height: 80vh; */
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 0.2rem;
+  /* grid-template-areas: 
+    "detailPoster detailTitle"
+    "detailPoster detailDescription"
+    "detailPoster detailDescription"
+    "detailGenre detailDescription"
+    "detailBack detailBack"
+  ; */
+  justify-content: start;
+}
+
+/* for poster thumbnails in item */
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 60%; */
+  height: 100%;
+}
