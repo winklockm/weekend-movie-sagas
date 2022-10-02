@@ -1,9 +1,14 @@
 .App {
   text-align: center;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  background: rgb(0,0,0);
+  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(9,90,121,1) 47%, rgba(0,0,0,1) 100%);
 }
 
 
-.App-header {
+/* .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
@@ -16,9 +21,79 @@
 
 .App-intro {
   font-size: large;
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+} */
+
+:root{
+  --main-radius: 5px;
+  --main-padding: 5px;
+}
+
+.itemContainer {
+  display: grid;
+  height: 80vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: .25fr .375fr .25fr .125fr;
+  grid-gap: 0.2rem;
+  grid-template-areas: 
+    "itemPoster itemTitle"
+    "itemPoster itemDescription"
+    "itemPoster itemDescription"
+    "itemGenre itemDescription"
+    "itemBack itemBack"
+  ;
+  justify-content: start;
+}
+
+#itemPoster {
+  background-color: lightblue;
+  grid-area: itemPoster;
+  border-radius: var(--main-radius);
+  padding: var(--main-padding);
+}
+
+#itemTitle {
+  background-color: lightcoral;
+  grid-area: itemTitle;
+  border-radius: var(--main-radius);
+  padding: var(--main-padding);
+}
+
+#itemDescription {
+  background-color: lightseagreen;
+  grid-area: itemDescription;
+  border-radius: var(--main-radius);
+  padding: var(--main-padding);
+}
+
+#itemGenre {
+  background-color: lightsalmon;
+  grid-area: itemGenre;
+  border-radius: var(--main-radius);
+  padding: var(--main-padding);
+}
+
+#itemBack {
+  background-color: lightsalmon;
+  grid-area: itemBack;
+  border-radius: var(--main-radius);
+  padding: var(--main-padding);
+}
+
+@media only screen and (max-width: 550px) {
+  .itemContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: .375fr .125fr .25fr .125fr;
+    grid-template-areas: 
+      "itemPoster"
+      "itemTitle"
+      "itemDescription"
+      "itemGenre"
+      "itemBack"
+    ;
+  }
 }
