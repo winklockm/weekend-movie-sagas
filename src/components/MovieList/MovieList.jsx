@@ -15,18 +15,19 @@ function MovieList() {
 
     return (
         <main>
+                <Grid container spacing={6}>
+                    {movies.map(movie => (
+                        <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={movie.id}>
+                            <MovieItem key={movie.id} movie={movie} />
+                        </Grid>
+                    ))}
+                </Grid>
+
             {/* <div className='listContainer'>
                 {movies.map(movie => (
                     <MovieItem key={movie.id} movie={movie} />
                     ))}
             </div> */}
-
-            <Grid container spacing={2}>
-                {movies.map(movie => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={movie.id}>
-                        <MovieItem key={movie.id} movie={movie} />
-                    </Grid>
-                ))}
 
                 {/* <Grid item xs={8}>
                     <Item>xs=8</Item>
@@ -40,7 +41,7 @@ function MovieList() {
                 <Grid item xs={8}>
                     <Item>xs=8</Item>
                 </Grid> */}
-            </Grid>
+            
 
             {/* <div className='listContainer'>
                 {movies.map(movie => (
