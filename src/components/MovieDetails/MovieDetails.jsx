@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 
 function MovieDetails() {
     
@@ -34,36 +36,51 @@ function MovieDetails() {
     }
     console.log('movieGenres are:', movieGenres)
     return (
-
-        // <p>{movieDetails.title}</p>
-        // <p>{movieDetails.description}</p>
-        // {movieGenres.map(genre => (
-        //     <p key={genre}>{genre}</p>
-        // ))}
-        // <img src={movieDetails.poster} alt={movieDetails.title}/>
-        
-
-
-        <div className='detailContainer'>
-            <div id='detailPoster'><img src={movieDetails.poster} alt={movieDetails.title}/></div>
-            <div id='detailTitle'>
-                <Typography variant="h4" gutterBottom>
-                    {movieDetails.title}
-                </Typography>
-            </div>
-            <div id='detailDescription'>
-                <Typography variant="body1" gutterBottom>
-                    {movieDetails.description}
-                </Typography>
-            </div>
-            <div id='detailGenre'>
-                {movieGenres.map(genre => (
-                    <Typography variant="subtitle1" gutterBottom key={genre}>{genre}</Typography>
-                ))}
-            </div>
-            <div id='detailBack'>
-                <Button onClick={handleBack} variant="contained">Back to Movie List</Button>
-            </div>
+        <div className='detailsDiv'>
+            <Grid container>
+                <Grid 
+                    item 
+                    xs={12} 
+                    lg={6} 
+                    className='posterCell'>
+                        <img 
+                        className='fullPoster' 
+                        src={movieDetails.poster} 
+                        alt={movieDetails.title}/>
+                </Grid>
+                <Grid 
+                    item
+                    xs={12} 
+                    lg={6}
+                    className='textCell'>
+                    <Stack spacing={4}>
+                        <div>                    
+                            <Typography variant="h4" gutterBottom>
+                                {movieDetails.title}
+                            </Typography>
+                            <Typography variant="body1" gutterBottom>
+                                {movieDetails.description}
+                            </Typography>
+                        </div>
+                        <div>
+                            <Stack
+                            direction="row"
+                            justifyContent="center"
+                            alignItems="center"
+                            spacing={2}>
+                                {movieGenres.map(genre => (
+                                    <div key={genre} className='genreTags'>
+                                        {genre}
+                                    </div>
+                                ))}
+                            </Stack>
+                        </div>
+                        <div>
+                            <Button onClick={handleBack} variant="contained">Back to Movie List</Button>
+                        </div>
+                    </Stack>
+                </Grid>
+            </Grid>
         </div>
     )
 }

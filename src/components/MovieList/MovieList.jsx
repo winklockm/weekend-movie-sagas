@@ -22,45 +22,7 @@ function MovieList() {
                         </Grid>
                     ))}
                 </Grid>
-
-            {/* <div className='listContainer'>
-                {movies.map(movie => (
-                    <MovieItem key={movie.id} movie={movie} />
-                    ))}
-            </div> */}
-
-                {/* <Grid item xs={8}>
-                    <Item>xs=8</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>xs=4</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>xs=4</Item>
-                </Grid>
-                <Grid item xs={8}>
-                    <Item>xs=8</Item>
-                </Grid> */}
-            
-
-            {/* <div className='listContainer'>
-                {movies.map(movie => (
-                    <MovieItem key={movie.id} movie={movie} />
-                    ))}
-            </div> */}
-
-            {/* <section className="movies">
-                {movies.map(movie => {
-                    return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
-                        </div>
-                    );
-                })}
-            </section> */}
         </main>
-
     );
 }
 

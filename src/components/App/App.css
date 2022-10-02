@@ -9,136 +9,14 @@
 }
 
 
-/* .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-} */
-
-/* @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
-
-:root{
-  --main-radius: 5px;
-  --main-padding: 5px;
-}
-
-.detailContainer {
-  display: grid;
-  height: 80vh;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: .25fr .375fr .25fr .125fr;
-  grid-gap: 0.2rem;
-  grid-template-areas: 
-    "detailPoster detailTitle"
-    "detailPoster detailDescription"
-    "detailPoster detailDescription"
-    "detailGenre detailDescription"
-    "detailBack detailBack"
-  ;
-  justify-content: start;
-}
-
-#detailPoster {
-  background-color: lightblue;
-  grid-area: detailPoster;
-  border-radius: var(--main-radius);
-  padding: var(--main-padding);
-}
-
-#detailTitle {
-  background-color: lightcoral;
-  grid-area: detailTitle;
-  border-radius: var(--main-radius);
-  padding: var(--main-padding);
-}
-
-#detailDescription {
-  background-color: lightseagreen;
-  grid-area: detailDescription;
-  border-radius: var(--main-radius);
-  padding: var(--main-padding);
-}
-
-#detailGenre {
-  background-color: lightsalmon;
-  grid-area: detailGenre;
-  border-radius: var(--main-radius);
-  padding: var(--main-padding);
-}
-
-#detailBack {
-  background-color: lightsalmon;
-  grid-area: detailBack;
-  border-radius: var(--main-radius);
-  padding: var(--main-padding);
-}
-
-@media only screen and (max-width: 550px) {
-  .detailContainer {
-    grid-template-columns: 1fr;
-    grid-template-rows: .375fr .125fr .25fr .125fr;
-    grid-template-areas: 
-      "detailPoster"
-      "detailTitle"
-      "detailDescription"
-      "detailGenre"
-      "detailBack"
-    ;
-  }
-}
-
-
-.listContainer {
-  background-color: tomato;
-  display: grid;
-  /* height: 80vh; */
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: .33fr .33fr .33fr;
-  grid-gap: 0.2rem;
-  /* grid-template-areas: 
-    "detailPoster detailTitle"
-    "detailPoster detailDescription"
-    "detailPoster detailDescription"
-    "detailGenre detailDescription"
-    "detailBack detailBack"
-  ; */
-  justify-content: start;
-}
-
-
-.itemContainer {
-  background-color: blueviolet;
-  display: grid;
-  /* height: 80vh; */
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-gap: 0.2rem;
-  /* grid-template-areas: 
-    "detailPoster detailTitle"
-    "detailPoster detailDescription"
-    "detailPoster detailDescription"
-    "detailGenre detailDescription"
-    "detailBack detailBack"
-  ; */
-  justify-content: start;
-}
+/* ***** MOVIE LIST ***** */
 
 main {
-  /* background-color: blueviolet; */
   margin: 5rem;
 }
+
+
+/* ***** MOVIE ITEM ***** */
 
 .thumbnailPoster {
   transition: transform .4s;
@@ -149,9 +27,37 @@ main {
 }
 
 .thumb {
-  transition: box-shadow .4s;
+  width: auto; 
+  height: 270px;
 }
 
 .thumb:hover {
   box-shadow: 0px 0px 66px 0px rgba(245,70,205,1);
+}
+
+
+/* ***** MOVIE DETAILS ***** */
+
+
+.posterCell {
+  padding: 5px;
+}
+
+.fullPoster {
+  width: auto; 
+  height: 650px;
+}
+
+.textCell {
+  padding: 5px;
+}
+
+.detailsDiv {
+  margin: 5rem;
+}
+
+.genreTags {
+  background-color: rgb(212, 196, 193);
+  border-radius: 50px;
+  padding: 7px;
 }
