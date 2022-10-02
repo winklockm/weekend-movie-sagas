@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import './MovieList.css'
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import MovieItem from '../MovieItem/MovieItem';
 import Grid from '@mui/material/Grid';
 
@@ -14,15 +15,19 @@ function MovieList() {
     }, []);
 
     return (
-        <main>
-                <Grid container spacing={6}>
-                    {movies.map(movie => (
-                        <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={movie.id}>
-                            <MovieItem key={movie.id} movie={movie} />
-                        </Grid>
-                    ))}
-                </Grid>
-        </main>
+        <>
+            <Header />
+            <main>
+                    <Grid container spacing={6}>
+                        {movies.map(movie => (
+                            <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={movie.id}>
+                                <MovieItem key={movie.id} movie={movie} />
+                            </Grid>
+                        ))}
+                    </Grid>
+            </main>
+            <Footer />
+        </>
     );
 }
 

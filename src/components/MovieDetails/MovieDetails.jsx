@@ -1,6 +1,8 @@
 import { useParams, useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -36,52 +38,56 @@ function MovieDetails() {
     }
     console.log('movieGenres are:', movieGenres)
     return (
-        <div className='detailsDiv'>
-            <Grid container>
-                <Grid 
-                    item 
-                    xs={12} 
-                    lg={6} 
-                    className='posterCell'>
-                        <img 
-                        className='fullPoster' 
-                        src={movieDetails.poster} 
-                        alt={movieDetails.title}/>
+        <>
+            <Header />
+            <div className='detailsDiv'>
+                <Grid container>
+                    <Grid 
+                        item 
+                        xs={12} 
+                        lg={6} 
+                        className='posterCell'>
+                            <img 
+                            className='fullPoster' 
+                            src={movieDetails.poster} 
+                            alt={movieDetails.title}/>
+                    </Grid>
+                    <Grid 
+                        item
+                        xs={12} 
+                        lg={6}
+                        className='textCell'>
+                        <Stack spacing={4}>
+                            <div>                    
+                                <Typography variant="h4" gutterBottom>
+                                    {movieDetails.title}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    {movieDetails.description}
+                                </Typography>
+                            </div>
+                            <div>
+                                <Stack
+                                direction="row"
+                                justifyContent="center"
+                                alignItems="center"
+                                spacing={2}>
+                                    {movieGenres.map(genre => (
+                                        <div key={genre} className='genreTags'>
+                                            {genre}
+                                        </div>
+                                    ))}
+                                </Stack>
+                            </div>
+                            <div>
+                                <Button onClick={handleBack} variant="contained">Back to Movie List</Button>
+                            </div>
+                        </Stack>
+                    </Grid>
                 </Grid>
-                <Grid 
-                    item
-                    xs={12} 
-                    lg={6}
-                    className='textCell'>
-                    <Stack spacing={4}>
-                        <div>                    
-                            <Typography variant="h4" gutterBottom>
-                                {movieDetails.title}
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                                {movieDetails.description}
-                            </Typography>
-                        </div>
-                        <div>
-                            <Stack
-                            direction="row"
-                            justifyContent="center"
-                            alignItems="center"
-                            spacing={2}>
-                                {movieGenres.map(genre => (
-                                    <div key={genre} className='genreTags'>
-                                        {genre}
-                                    </div>
-                                ))}
-                            </Stack>
-                        </div>
-                        <div>
-                            <Button onClick={handleBack} variant="contained">Back to Movie List</Button>
-                        </div>
-                    </Stack>
-                </Grid>
-            </Grid>
-        </div>
+            </div>
+            <Footer />
+        </>
     )
 }
 
