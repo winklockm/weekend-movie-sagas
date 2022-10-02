@@ -6,7 +6,6 @@ import Footer from '../Footer/Footer';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 
 function MovieDetails() {
     
@@ -41,14 +40,13 @@ function MovieDetails() {
         <>
             <Header />
             <div className='detailsDiv'>
-                <Grid container>
+                <Grid container className='detailsContainer' justifyContent="center">
                     <Grid 
                         item 
-                        xs={12} 
-                        lg={6} 
-                        className='posterCell'>
+                        xs={12}
+                        lg={6}>
                             <img 
-                            className='fullPoster' 
+                            className='posterImg' 
                             src={movieDetails.poster} 
                             alt={movieDetails.title}/>
                     </Grid>
@@ -57,33 +55,29 @@ function MovieDetails() {
                         xs={12} 
                         lg={6}
                         className='textCell'>
-                        <Stack spacing={4}>
-                            <div>                    
-                                <Typography variant="h4" gutterBottom>
+                        <div className='subtextCell'>
+                            <div className='titleDiv'>                    
+                                <Typography className='details' variant="h4" gutterBottom>
                                     {movieDetails.title}
                                 </Typography>
-                                <Typography variant="body1" gutterBottom>
+                            </div>
+                            <div className='descriptionDiv'>
+                                <Typography className='details' variant="body1" gutterBottom>
                                     {movieDetails.description}
                                 </Typography>
                             </div>
-                            <div>
-                                <Stack
-                                direction="row"
-                                justifyContent="center"
-                                alignItems="center"
-                                spacing={2}>
-                                    {movieGenres.map(genre => (
-                                        <div key={genre} className='genreTags'>
-                                            {genre}
-                                        </div>
-                                    ))}
-                                </Stack>
+                            <div className='genreDiv'>
+                                {movieGenres.map(genre => (
+                                    <span key={genre} className='genreTags'>
+                                        {genre}
+                                    </span>
+                                ))}
                             </div>
-                            <div>
-                                <Button onClick={handleBack} variant="contained">Back to Movie List</Button>
+                            <div className='buttonDiv'>
+                                <Button onClick={handleBack} variant="outlined">Return to Movie List</Button>
                             </div>
-                        </Stack>
-                    </Grid>
+                        </div>
+                    </Grid>            
                 </Grid>
             </div>
             <Footer />

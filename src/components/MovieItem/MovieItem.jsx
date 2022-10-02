@@ -14,7 +14,7 @@ function MovieItem({movie}) {
     return (
         <Grid 
         container
-        justifyContent="center"
+        justifyContent='center'
         className='thumbnailPoster'
         key={movie.id}>
             <Grid 
@@ -22,7 +22,7 @@ function MovieItem({movie}) {
             xs={12}>
                 <img 
                 onClick={handleClick}
-                className='thumb'
+                className='image'
                 src={movie.poster} 
                 alt={movie.title}/>
             </Grid>

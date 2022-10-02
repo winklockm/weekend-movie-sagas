@@ -3,9 +3,11 @@ import Typography from '@mui/material/Typography';
 function Header() {
 
     return (
-        <Typography variant="h1" gutterBottom>
-        The Movies Saga
-      </Typography>
+        <div >
+            <Typography className='header'variant="h2" gutterBottom>
+                Documentaries Now
+            </Typography>
+        </div>
     )
 }
 

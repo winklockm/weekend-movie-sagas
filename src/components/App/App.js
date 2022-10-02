@@ -7,16 +7,15 @@ function App() {
   return (
     <div className="App">
       <Router>        
-        <Route path="/" exact>
+        <Route exact path="/">
           <MovieList />
         </Route>
-        <Route path="/details/:id" exact>
+        <Route exact path="/details/:id">
           <MovieDetails />
         </Route>
       </Router>
     </div>
   );
 }
-
 
 export default App;

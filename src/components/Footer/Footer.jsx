@@ -4,7 +4,7 @@ function Footer() {
 
 
     return (
-        <Typography variant="h6" gutterBottom>
+        <Typography className='footer' variant="subtitle1" gutterBottom>
             Made by Maggie
         </Typography>
     )
