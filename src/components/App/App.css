@@ -2,7 +2,8 @@
   text-align: center;
   background-color: black;
   color: white;
-  height: 100vh;
+  /* height: 100vh; */
+  display: grid;
   background: rgb(0,0,0);
   background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(9,90,121,1) 47%, rgba(0,0,0,1) 100%);
 }
@@ -33,67 +34,67 @@
   --main-padding: 5px;
 }
 
-.itemContainer {
+.detailContainer {
   display: grid;
   height: 80vh;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: .25fr .375fr .25fr .125fr;
   grid-gap: 0.2rem;
   grid-template-areas: 
-    "itemPoster itemTitle"
-    "itemPoster itemDescription"
-    "itemPoster itemDescription"
-    "itemGenre itemDescription"
-    "itemBack itemBack"
+    "detailPoster detailTitle"
+    "detailPoster detailDescription"
+    "detailPoster detailDescription"
+    "detailGenre detailDescription"
+    "detailBack detailBack"
   ;
   justify-content: start;
 }
 
-#itemPoster {
+#detailPoster {
   background-color: lightblue;
-  grid-area: itemPoster;
+  grid-area: detailPoster;
   border-radius: var(--main-radius);
   padding: var(--main-padding);
 }
 
-#itemTitle {
+#detailTitle {
   background-color: lightcoral;
-  grid-area: itemTitle;
+  grid-area: detailTitle;
   border-radius: var(--main-radius);
   padding: var(--main-padding);
 }
 
-#itemDescription {
+#detailDescription {
   background-color: lightseagreen;
-  grid-area: itemDescription;
+  grid-area: detailDescription;
   border-radius: var(--main-radius);
   padding: var(--main-padding);
 }
 
-#itemGenre {
+#detailGenre {
   background-color: lightsalmon;
-  grid-area: itemGenre;
+  grid-area: detailGenre;
   border-radius: var(--main-radius);
   padding: var(--main-padding);
 }
 
-#itemBack {
+#detailBack {
   background-color: lightsalmon;
-  grid-area: itemBack;
+  grid-area: detailBack;
   border-radius: var(--main-radius);
   padding: var(--main-padding);
 }
 
 @media only screen and (max-width: 550px) {
-  .itemContainer {
+  .detailContainer {
     grid-template-columns: 1fr;
     grid-template-rows: .375fr .125fr .25fr .125fr;
     grid-template-areas: 
-      "itemPoster"
-      "itemTitle"
-      "itemDescription"
-      "itemGenre"
-      "itemBack"
+      "detailPoster"
+      "detailTitle"
+      "detailDescription"
+      "detailGenre"
+      "detailBack"
     ;
   }
 }

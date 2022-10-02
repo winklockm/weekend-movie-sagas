@@ -44,24 +44,24 @@ function MovieDetails() {
         
 
 
-        <div className='itemContainer'>
-            <div id='itemPoster'><img src={movieDetails.poster} alt={movieDetails.title}/></div>
-            <div id='itemTitle'>
+        <div className='detailContainer'>
+            <div id='detailPoster'><img src={movieDetails.poster} alt={movieDetails.title}/></div>
+            <div id='detailTitle'>
                 <Typography variant="h4" gutterBottom>
                     {movieDetails.title}
                 </Typography>
             </div>
-            <div id='itemDescription'>
+            <div id='detailDescription'>
                 <Typography variant="body1" gutterBottom>
                     {movieDetails.description}
                 </Typography>
             </div>
-            <div id='itemGenre'>
+            <div id='detailGenre'>
                 {movieGenres.map(genre => (
                     <Typography variant="subtitle1" gutterBottom key={genre}>{genre}</Typography>
                 ))}
             </div>
-            <div id='itemBack'>
+            <div id='detailBack'>
                 <Button onClick={handleBack} variant="contained">Back to Movie List</Button>
             </div>
         </div>
