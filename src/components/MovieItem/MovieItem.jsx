@@ -1,4 +1,6 @@
 import {useHistory} from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 function MovieItem({movie}) {
 
@@ -10,10 +12,31 @@ function MovieItem({movie}) {
     }
 
     return (
-        <div onClick={handleClick} key={movie.id} >
-            <h3>{movie.title}</h3>
-            <img src={movie.poster} alt={movie.title}/>
-        </div>
+        <Grid 
+        container
+        justifyContent='center'
+        className='thumbnailPoster'
+        key={movie.id}>
+            <Grid 
+            item 
+            xs={12}>
+                <img 
+                onClick={handleClick}
+                className='image'
+                src={movie.poster} 
+                alt={movie.title}/>
+            </Grid>
+            <Grid 
+            item 
+            xs={10}>
+                <Typography 
+                onClick={handleClick} 
+                variant="h6" 
+                gutterBottom>
+                    {movie.title}
+                </Typography>
+            </Grid>
+        </Grid>
     )
 }
 

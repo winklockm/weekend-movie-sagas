@@ -1,7 +1,11 @@
 import { useParams, useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 function MovieDetails() {
     
@@ -34,13 +38,49 @@ function MovieDetails() {
     console.log('movieGenres are:', movieGenres)
     return (
         <>
-        <p>{movieDetails.title}</p>
-        <p>{movieDetails.description}</p>
-        {movieGenres.map(genre => (
-            <p key={genre}>{genre}</p>
-        ))}
-        <img src={movieDetails.poster} alt={movieDetails.title}/>
-        <Button onClick={handleBack} variant="contained">Back to Movie List</Button>
+            <Header />
+            <div className='detailsDiv'>
+                <Grid container className='detailsContainer' justifyContent="center">
+                    <Grid 
+                        item 
+                        xs={12}
+                        lg={6}>
+                            <img 
+                            className='posterImg' 
+                            src={movieDetails.poster} 
+                            alt={movieDetails.title}/>
+                    </Grid>
+                    <Grid 
+                        item
+                        xs={12} 
+                        lg={6}
+                        className='textCell'>
+                        <div className='subtextCell'>
+                            <div className='titleDiv'>                    
+                                <Typography className='details' variant="h4" gutterBottom>
+                                    {movieDetails.title}
+                                </Typography>
+                            </div>
+                            <div className='descriptionDiv'>
+                                <Typography className='details' variant="body1" gutterBottom>
+                                    {movieDetails.description}
+                                </Typography>
+                            </div>
+                            <div className='genreDiv'>
+                                {movieGenres.map(genre => (
+                                    <span key={genre} className='genreTags'>
+                                        {genre}
+                                    </span>
+                                ))}
+                            </div>
+                            <div className='buttonDiv'>
+                                <Button onClick={handleBack} variant="outlined">Return to Movie List</Button>
+                            </div>
+                        </div>
+                    </Grid>            
+                </Grid>
+            </div>
+            <Footer />
         </>
     )
 }
