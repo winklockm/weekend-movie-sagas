@@ -2,7 +2,7 @@
   text-align: center;
   color: white;
   display: grid;
-  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(9,90,121,1) 47%, rgba(0,0,0,1) 100%);
+  /* background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(9,90,121,1) 47%, rgba(0,0,0,1) 100%); */
 }
 
 .header{
